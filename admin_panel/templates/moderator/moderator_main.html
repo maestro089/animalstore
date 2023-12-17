@@ -1,0 +1,36 @@
+﻿{% extends 'base.html' %}
+{% block title %}Страница администратора{% endblock title %}
+
+{% block content %}
+    {% include 'menu_moderator.html'%}
+    <div class="container mt-5">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">id</th>
+                    <th scope="col">Имя</th>
+                    <th scope="col">Фамилия</th>
+                    <th scope="col">Username</th>
+                    <th scope="col">Менеджер</th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for user in user %}
+                <tr>
+                    <th scope="row">{{user.pk}}</th>
+                    <td>{{user.first_name}}</td>
+                    <td>{{user.last_name}}</td>
+                    <td>{{user.username}}</td>
+                        {% if user.is_staff %}
+                                <td><a href="{% url 'delete_menejer' user.pk %}">Удалить менеджер</a></td>
+                            {% else %}
+                                <td><a href="{% url 'add_menejer' user.pk %}">Добавить менеджера</a></td>
+                            {% endif %}
+                    <td>{% include 'moderator/delete_user.html'%}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %} 

@@ -1,0 +1,16 @@
+﻿
+<div class="col-3 mt-3">
+    <div class="card shadow-sm">
+        <img class="d-block w-100" src="../../media/{{new.photo}}">
+        <div class="card-body">
+            <h5 class="card-text"><b>{{new.title}}</b></h5>
+            <div class="d-flex justify-content-between align-items-center">
+                <form class="btn-group" method="get" name="">
+                    <div class="btn-group">
+                        <a class="btn btn-sm btn-outline-secondary" href="{% url 'new_info' new.pk %}">Читать</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

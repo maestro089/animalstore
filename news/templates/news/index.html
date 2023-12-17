@@ -1,0 +1,7 @@
+{% extends 'base.html' %}
+{% block content %}
+
+{% for new in news%}
+{% include "news/card.html" %}
+{% endfor %}
+{% endblock content %}

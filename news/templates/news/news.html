@@ -1,0 +1,47 @@
+﻿{% extends 'base.html' %}
+
+{% block title %}
+    {% for ad in ad %}
+        {{ad.title}}
+    {% endfor %}
+{%endblock title%}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row">
+        <div class="col col-lg-3">
+            <img class="d-block w-100 border border-5" src="../../../media/{{new.photo}}">
+        </div>
+        <div class="col position-static">
+            <div class=" w-auto">
+                <h1>{{new.title}}</h1>
+                <p>{{new.text}}</p>
+                <p>{{new.time_create}}</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<hr>
+<div class="row">
+    <form class="form-outline col-6 mb-3" method="POST">
+        {% csrf_token %}
+        <textarea class="form-control" name="Text" rows="4" style="background: #fff;"></textarea>
+        <div class="float-end mt-2 pt-1">
+            {% if request.user.is_authenticated %}
+                <button type="submit" class="btn btn-primary btn-sm ">Добавить комментарий</button>
+            {% else %}
+                <a class="btn btn-primary btn-sm" href="{% url 'login' %}">Авторизация</a>
+            {% endif %}
+        </div>
+    </form>
+    <div>
+        {% for comment in comment %}
+        <div class="border-bottom p-2 mt-2 w-50 rounded" style="background: #fff;">
+            <p>{{comment.text}}</p>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

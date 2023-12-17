@@ -1,0 +1,21 @@
+﻿{% extends 'base.html' %}
+{% block title %}Страница администратора{% endblock title %}
+
+{% block content %}
+    {% include 'menu_moderator.html'%}
+
+<div class="row mt-5">
+    <div class="col-1"></div>
+    <div class="col-7">
+        <h5>Новые комментарии</h5>
+        <ol>
+            {% for comment in comments %}
+                {% if comment.is_publishe %}
+                    <li>{{comment.text}} {% include 'delete_comment.html'%}</li>
+                    <hr />
+                {% endif %}
+            {% endfor %}
+        </ol>
+    </div>
+</div>
+{% endblock %}

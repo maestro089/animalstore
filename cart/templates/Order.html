@@ -1,0 +1,57 @@
+﻿{% extends 'base.html' %}
+{% block title %}Заказы{% endblock title %}
+{% block content %}
+<div class="container mt-5">
+    <table class="table">
+        <thead>
+            <tr>
+                <th width="10%" scope="col">id</th>
+                <th scope="col">Статус заказа</th>
+                <th width="12%" scope="col"></th>
+                <th width="53%" scope="col">Состав заказа</th>
+            </tr>
+        </thead>
+        {% for order in orders %}
+        <tr>
+            <th scope="row"><p>{{order.id}}</p></th>
+            <td>
+                <p>
+                    {% for key,value in order.STATUS_CHOICES %}
+                        {% if order.status == key %}
+                        <b>{{ value }}</b>
+                        {% endif %}
+                    {% endfor %}
+                </p>
+            </td>
+            <td>
+                <a class="btn btn-primary" data-bs-toggle="collapse" href="#multiCollapseExample{{order.pk}}" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">Подробнее</a>
+            </td>
+            <td>
+                <div class="collapse multi-collapse" id="multiCollapseExample{{order.pk}}">
+                    <div class="card card-body">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">id</th>
+                                    <th scope="col">Название</th>
+                                    <th scope="col">Количество</th>
+                                </tr>
+                            </thead>
+                            <tr>Дата заказа: {{order.created }}</tr></br>
+                            {% for product in product %}
+                            <tr>
+                                {% if product.order == order %}
+                                <th scope="row"><p>{{product.product.pk}}</p></th>
+                                <td><p>{{product.product.title}}</p></td>
+                                <td><p>{{product.quantity}}</p></td>
+                                {% endif %}
+                            </tr>
+                            {% endfor %}
+                        </table>
+                    </div>
+                </div>
+            </td>
+            {% endfor %}
+    </table>
+</div>
+{% endblock %}

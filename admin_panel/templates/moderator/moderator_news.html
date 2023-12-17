@@ -1,0 +1,33 @@
+﻿{% extends 'base.html' %}
+{% block title %}Страница администратора{% endblock title %}
+
+{% block content %}
+    {% include 'menu_moderator.html'%}
+    <div class="container mt-5">
+        <a href="{% url 'create_news'%}">Создать</a>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">id</th>
+                    <th scope="col">Название</th>
+                    <th scope="col">Дата публикации</th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for ad in news %}
+                <tr>
+                    <th scope="row">{{ad.pk}}</th>
+                    <td>{{ad.title}}</td>
+                    <td>{{ad.time_create}}</td>
+                    <td>
+                        <a href="{% url 'edit_news' ad.id %}">Редактировать</a>
+                        <a href="{% url 'delete_news' ad.id %}">Удалить</a>
+                    </td>
+
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %} 

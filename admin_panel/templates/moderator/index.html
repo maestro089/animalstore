@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+{% block title %}Страница менеджера{% endblock title %}
+
+{% block content %}
+<div class="container mt-5">
+    <table class="table">
+        <thead>
+            <tr>
+                <th width="2%" scope="col">id</th>
+                <th width="8%" scope="col">Заказчик</th>
+                <th scope="col">Статус заказа</th>
+                <th width="12%" scope="col"></th>
+                <th width="53%" scope="col">Состав заказа</th>
+
+            </tr>
+        </thead>
+        {% for order in orders %}
+        <tr>
+            <th scope="row"><p>{{order.id}}</p></th>
+            <td><p>{{order.customer}}</p></td>
+            <td>
+                <form method="POST" name="status_edit" class="row" action="{% url 'manager_main' %}?order_id={{ order.pk }}&next={{ request.path }}">
+                    {% csrf_token %}
+                    <select class="col" name="status">
+                        {% for key,value in order.STATUS_CHOICES %}
+                            {% if order.status == key %}
+                                <option value="{{key}}" selected>{{ value }}</option>
+                            {% else %}
+                                <option value="{{key}}">{{ value }}</option>
+                            {% endif %}
+                        {% endfor %}
+                    </select>
+                    <button class="col ms-2 btn btn-primary" type="submit">Сохранить</button>
+                </form>
+            </td>
+            <td>
+                <a class="btn btn-primary" data-bs-toggle="collapse" href="#multiCollapseExample{{order.pk}}" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">Подробнее</a>
+            </td>
+            <td>
+                <div class="collapse multi-collapse" id="multiCollapseExample{{order.pk}}">
+                    <div class="card card-body">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">id</th>
+                                    <th scope="col">Название книги</th>
+                                    <th scope="col">Количество книг</th>
+                                </tr>
+                            </thead>
+                            <tr>Дата заказа: {{order.created }}</tr></br>
+                            <tr>Адрес: {{order.adress}}</tr>
+                            {% for product in products %}
+                            <tr>
+                                {% if product.order == order %}
+                                <th scope="row"><p>{{product.product.pk}}</p></th>
+                                <td><p>{{product.product.title}}</p></td>
+                                <td><p>{{product.quantity}}</p></td>
+                                {% endif %}
+                            </tr>
+                            {% endfor %}
+                        </table>
+                    </div>
+                </div>
+            </td>
+            {% endfor %}
+        </tr>
+    </table>
+</div>
+{% endblock %}

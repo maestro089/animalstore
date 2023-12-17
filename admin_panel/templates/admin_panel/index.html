@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form enctype="multipart/form-data" method="post" action="{% url 'new_create' %}">
+    {% csrf_token %}
+    <input name="title">
+    <input name="text">
+    <input type="file" name="photo">
+    <button type="submit">Создать</button>
+
+</form>
+
+</body>
+</html>

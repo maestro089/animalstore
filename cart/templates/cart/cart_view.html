@@ -1,0 +1,32 @@
+﻿{% extends 'base.html' %}
+{% block title %}Корзина{% endblock title %}
+{% block content %}
+
+{% if cart %}
+    <ol class="list-group">
+        {% for cart in cart %}
+        <li class="list-group-item mt-3 border border-4">
+            <div class=" row  mt-3">
+                <img class="col-2" src="../../media/{{cart.title.photo}}" />
+                <div class="col-4">
+                    <p><b>Название товара: {{cart.title}}</b></p>
+                    <p>Количество: {{cart.quentity}}</p>
+                    <br />
+                    {% include 'delete_cart.html' %}
+                </div>
+            </div>
+        </li>
+        {% endfor %}
+    </ol>
+    <p><b>Итоговая стоимость:</b> {{price}}</p>
+    <form action="{% url 'place_order' %}" method="POST">
+    {% csrf_token %}
+    <br />
+    <button class="btn btn-success" type="submit">
+        Заказать
+    </button>
+</form>
+{% else %}
+<h1>Корзина пуста</h1>
+{% endif %}
+{% endblock %}
