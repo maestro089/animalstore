@@ -10,6 +10,7 @@ class News(models.Model):
     time_create = models.DateTimeField(
         auto_now_add=True, verbose_name="Дата публикация"
     )
+    autor = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name="Автор", null=True)
 
     def __str__(self):
         return self.title
@@ -27,6 +28,9 @@ class Comment(models.Model):
     text = models.TextField(blank=True, verbose_name="Текст")
     author = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name="Автор")
     news_id = models.ForeignKey(News, on_delete=models.CASCADE, verbose_name="Новость")
+    time_create = models.DateTimeField(
+        auto_now_add=True, verbose_name="Дата публикация", null=True
+    )
 
     class Meta:
         verbose_name = "Комментарий"

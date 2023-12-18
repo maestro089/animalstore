@@ -12,6 +12,9 @@ def main(request):
     context = {"news": news}
     return render(request, "main.html", context)
 
+def about(request):
+    return render(request, "about.html")
+
 def get(request):
     products = Product.objects.all()
     context = {"products": products}
