@@ -1,0 +1,32 @@
+h1 {
+  font-size: 24px;
+  color: #333;
+  text-align: center;
+}
+
+p {
+  font-size: 16px;
+  color: #666;
+  line-height: 1.6;
+}
+
+h2 {
+  font-size: 20px;
+  color: #333;
+  text-decoration: underline;
+}
+
+/* Пример стилизации контактной информации */
+.address {
+  font-style: italic;
+  margin-bottom: 10px;
+}
+
+.phone {
+  font-weight: bold;
+}
+
+.email {
+  text-decoration: underline;
+  color: blue;
+}

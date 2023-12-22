@@ -7,4 +7,5 @@ urlpatterns = [
     path("<int:pk>", views.info, name="product"),
     path("", views.main, name="home"),
     path("about", views.about, name="about"),
+    path("link", views.link, name="link"),
 ]

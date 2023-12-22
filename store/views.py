@@ -15,6 +15,9 @@ def main(request):
 def about(request):
     return render(request, "about.html")
 
+def link(request):
+    return render(request, "link.html")
+
 def get(request):
     products = Product.objects.all()
     context = {"products": products}

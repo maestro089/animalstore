@@ -2,4 +2,74 @@
 {% block title %}О нас{% endblock title %}
 {% block content %}
 
+ <!-- Modal gallery -->
+          <section class="">
+            <!-- Section: Images -->
+            <section class="">
+              <div class="row">
+                <div class="col-lg-4 col-md-12 mb-4 mb-lg-0">
+                  <div
+                    class="bg-image hover-overlay ripple shadow-1-strong rounded"
+                    data-ripple-color="light"
+                  >
+                    <img
+                      src="../../media/1.jpg"
+                      class="w-100"
+                    />
+                    <a href="#!" data-mdb-toggle="modal" data-mdb-target="#exampleModal1">
+                      <div class="mask" style="background-color: rgba(251, 251, 251, 0.2);"></div>
+                    </a>
+                  </div>
+                </div>
+
+                <div class="col-lg-4 mb-4 mb-lg-0">
+                  <div
+                    class="bg-image hover-overlay ripple shadow-1-strong rounded"
+                    data-ripple-color="light"
+                  >
+                    <img
+                      src="../../media/2.jpg"
+                      class="w-100"
+                    />
+                    <a href="#!" data-mdb-toggle="modal" data-mdb-target="#exampleModal2">
+                      <div class="mask" style="background-color: rgba(251, 251, 251, 0.2);"></div>
+                    </a>
+                  </div>
+                </div>
+
+                <div class="col-lg-4 mb-4 mb-lg-0">
+                  <div
+                    class="bg-image hover-overlay ripple shadow-1-strong rounded"
+                    data-ripple-color="light"
+                  >
+                    <img
+                      src="../../media/3.jpg"
+                      class="w-100"
+                    />
+                    <a href="#!" data-mdb-toggle="modal" data-mdb-target="#exampleModal3">
+                      <div class="mask" style="background-color: rgba(251, 251, 251, 0.2);"></div>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </section>
+            <!-- Section: Images -->
+          <!-- Modal gallery -->
+
+
+
+<h1>Добро пожаловать в интернет магазин домашних животных!</h1>
+<p>Наша компания специализируется на продаже качественных товаров для домашних животных.
+    Мы предлагаем широкий ассортимент кормов, игрушек, аксессуаров и многое другое для ваших питомцев.</p>
+<p>Мы гордимся тем, что предлагаем только лучшие товары от ведущих производителей, чтобы обеспечить заботу и комфорт для всех домашних животных.
+    Наша цель - помочь вам создать радостную и здоровую жизнь для ваших питомцев.</p>
+<p>Мы стремимся быть надежным партнером для всех владельцев домашних животных, предлагая только проверенные и сертифицированные товары, а также профессиональные консультации и помощь.</p>
+<div class="embed-responsive embed-responsive-21by9">
+  <iframe class="embed-responsive-item" src="https://yandex.ru/video/preview/8508784172964697878"></iframe>
+</div>
+<h2>Наши контакты</h2>
+<p class="address">Адрес: ул. Пушкина, д.10, г. Москва</p>
+<p class="phone">Телефон: +7 (495) 123-45-67</p>
+<p class="email">Email: info@petstore.com</p>
+<p><a href="{% url 'link' %}">Полезные ссылки</a></p>
 {% endblock %}
